@@ -16,6 +16,7 @@ describe('My Login application', () => {
         await LoginPage.btnLogin.click();
         await expect(LoginPage.errorMsg).toBeDisplayed();
         await expect(LoginPage.errorMsg).toHaveText("Epic sadface: Username is required")
+        await browser.refresh();
     });
     it('should not log in with complete username and empty password', async () => {
         await LoginPage.login('standard_user' , '');
