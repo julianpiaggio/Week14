@@ -32,8 +32,7 @@ describe('My Login application', () => {
     });
     it('should not login with valid credentials', async () => {
         await LoginPage.login('locked_out_user' , 'secret_sauce');
-        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
         await expect(LoginPage.errorMsg).toBeDisplayed();
-        await expect(LoginPage.errorMsg).toHaveText("Epic sadface: Username and password do not match any user in this service")
+        await expect(LoginPage.errorMsg).toHaveText("Epic sadface: Sorry, this user has been locked out.")
     });
 });

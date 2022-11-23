@@ -10,12 +10,14 @@ describe('My Login application', () => {
         await LoginPage.btnLogin.click();
         await LoginPage.errorMsg.waitForDisplayed();
         await expect(LoginPage.errorMsg).toHaveText("Epic sadface: Username is required")
+        await expect(LoginPage.logoLogin).toBeDisplayed();
     });
     it('should not log in with empty username and complete password', async () => {
         await LoginPage.login('' , 'test');
         await LoginPage.btnLogin.click();
         await expect(LoginPage.errorMsg).toBeDisplayed();
         await expect(LoginPage.errorMsg).toHaveText("Epic sadface: Username is required")
+        await expect(LoginPage.logoLogin).toBeDisplayed();
         await browser.refresh();
     });
     it('should not log in with complete username and empty password', async () => {
@@ -23,15 +25,22 @@ describe('My Login application', () => {
         await LoginPage.btnLogin.click();
         await expect(LoginPage.errorMsg).toBeDisplayed();
         await expect(LoginPage.errorMsg).toHaveText("Epic sadface: Password is required")
+        await expect(LoginPage.logoLogin).toBeDisplayed();
+
     });
     it('should not login with invalid credentials', async () => {
         await LoginPage.login('performance_glitch_user' , 'test');
         await LoginPage.btnLogin.click();
         await expect(LoginPage.errorMsg).toBeDisplayed();
         await expect(LoginPage.errorMsg).toHaveText("Epic sadface: Username and password do not match any user in this service")
+        await expect(LoginPage.logoLogin).toBeDisplayed();
+
     });
     it('should not login with valid credentials', async () => {
         await LoginPage.login('performance_glitch_user' , 'secret_sauce');
         await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+        await expect(LoginPage.logoPage).toBeDisplayed();
+        await LoginPage.btnBurguerMenu.click();
+        await LoginPage.btnLogout.click();
     });
 });

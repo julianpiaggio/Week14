@@ -29,6 +29,13 @@
         return $('#logout_sidebar_link');
     }
 
+    get logoLogin () {
+        return $('.login_logo');
+    }
+
+    get logoPage () {
+        return $('.app_logo');
+    }
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
