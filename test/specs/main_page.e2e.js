@@ -21,6 +21,35 @@ describe('My Login application', () => {
         await MainPage.btnGoHome.click();
         await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
     });
+    it('enter the chosen product, add product to cart and go to checkout with invalid data' , async () => {
+        await MainPage.firstTitleNameProduct.click();
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory-item.html?id=4');
+        await expect(MainPage.imageFirstProduct).toBeDisplayed();
+        await MainPage.btnAddCartFirstProduct.click();
+        await expect(MainPage.cartUnit).toBeDisplayed();
+        await MainPage.btnGoCart.click();
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/cart.html');
+        await expect(MainPage.checkboxCart).toBeDisplayed();
+        await expect(MainPage.firstTitleNameProduct).toBeDisplayed();
+        await MainPage.btnCheckout.click();
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/checkout-step-one.html');
+        await expect(MainPage.titleCheckout).toBeDisplayed();
+        await expect(MainPage.titleCheckout).toHaveText('CHECKOUT: YOUR INFORMATION');
+        await MainPage.completeCheckout('', '', '');
+        await MainPage.btnContinueCheckout.click();
+        await expect(MainPage.errorMsgCheckout).toBeDisplayed();
+        await expect(MainPage.errorMsgCheckout).toHaveText("Error: First Name is required");
+        await MainPage.completeCheckout('juan', '', '');
+        await MainPage.btnContinueCheckout.click();
+        await expect(MainPage.errorMsgCheckout).toBeDisplayed();
+        await expect(MainPage.errorMsgCheckout).toHaveText("Error: Last Name is required");
+        await MainPage.completeCheckout('juan', 'perez', '');
+        await MainPage.btnContinueCheckout.click();
+        await expect(MainPage.errorMsgCheckout).toBeDisplayed();
+        await expect(MainPage.errorMsgCheckout).toHaveText("Error: Postal Code is required");
+        await MainPage.btnCancelCheckout.click();
+        await MainPage.btnGoToMenu.click();
+    });
     it('should open social media from home page and return to home', async () => {
         await MainPage.btnTwitter.click();
         await browser.switchWindow('https://twitter.com/saucelabs');
@@ -39,5 +68,7 @@ describe('My Login application', () => {
         await expect(MainPage.formLinkedIn).toBeDisplayed();
         await browser.switchWindow('https://www.saucedemo.com/inventory.html');
         await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+        await MainPage.btnBurguerMenu.click();
+        await MainPage.btnLogout.click();
     });
 });

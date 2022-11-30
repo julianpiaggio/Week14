@@ -39,5 +39,7 @@ describe('My Login application', () => {
         await expect(MainPage.taxPurchase).toHaveText('Tax: $2.40');
         await expect(MainPage.totalPurchase).toHaveText('Total: $32.39');
         await MainPage.btnFinish.click();
+        await MainPage.btnBurguerMenu.click();
+        await MainPage.btnLogout.click();
     })
 });

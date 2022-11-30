@@ -112,6 +112,18 @@ class MainPage{
         return $('#continue')
     }
 
+    get errorMsgCheckout () {
+        return $('#checkout_info_container > div > form > div.checkout_info > div.error-message-container.error > h3')
+    }
+
+    get btnCancelCheckout () {
+        return $('#cancel')
+    }
+
+    get btnGoToMenu () {
+        return $('#continue-shopping')
+    }
+
     get btnContinueCheckout () {
         return $('#continue')
     }
@@ -167,7 +179,7 @@ class MainPage{
     get formLinkedIn () {
         return $('.join-form')
     }
-    
+
     async login (username, password) {
         await this.inputUsername.setValue(username);
         await this.inputPassword.setValue(password);
