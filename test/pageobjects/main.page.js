@@ -79,10 +79,81 @@ class MainPage{
     get btnGoHome () {
         return $('#back-to-products')
     }
+
+    get btnGoCart () {
+        return $('.shopping_cart_link')
+    }
+
+    get checkboxCart () {
+        return $('.cart_quantity')
+    }
+
+    get btnCheckout () {
+        return $('#checkout')
+    }
+
+    get titleCheckout () {
+        return $('.title')
+    }
+
+    get inputCheckoutFirstName () {
+        return $('#first-name')
+    }
+
+    get inputCheckoutLastName () {
+        return $('#last-name')
+    }
+
+    get inputCheckoutPostalCode () {
+        return $('#postal-code')
+    }
+
+    get btnContinueCheckout () {
+        return $('#continue')
+    }
+
+    get btnContinueCheckout () {
+        return $('#continue')
+    }
+
+    get btnFinish () {
+        return $('#finish')
+    }
+
+    get itemDescriptionProduct () {
+        return $('.inventory_item_desc')
+    }
+
+    get paymentInformationPurchase () {
+        return $('//div[.="Payment Information:"]')
+    }
+
+    get shippingInformationPurchase () {
+        return $('//div[.="Shipping Information:"]')
+    }
+
+    get subTotalPurchase () {
+        return $('.summary_subtotal_label')
+    }
+
+    get taxPurchase () {
+        return $('.summary_tax_label')
+    }
+
+    get totalPurchase () {
+        return $('.summary_total_label')
+    }
     async login (username, password) {
         await this.inputUsername.setValue(username);
         await this.inputPassword.setValue(password);
         await this.btnLogin.click();
     }
+
+    async completeCheckout (username, lastName, postalcode) {
+        await this.inputCheckoutFirstName.setValue(username);
+        await this.inputCheckoutLastName.setValue(lastName);
+        await this.inputCheckoutPostalCode.setValue(postalcode);
+    }
+
 }
 export default new MainPage();
