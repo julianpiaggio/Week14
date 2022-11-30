@@ -1,10 +1,5 @@
-/**
- * sub page containing specific selectors and methods for a specific page
- */
- class LoginPage{
-    /**
-     * define selectors using getter methods
-     */
+class LoginPage{
+
     get inputUsername () {
         return $('#user-name');
     }
@@ -36,10 +31,11 @@
     get logoPage () {
         return $('.app_logo');
     }
-    /**
-     * a method to encapsule automation code to interact with the page
-     * e.g. to login using username and password
-     */
+
+    get imagePage () {
+        return $('.bot_column');
+    }
+
     async login (username, password) {
         await this.inputUsername.setValue(username);
         await this.inputPassword.setValue(password);
