@@ -143,6 +143,31 @@ class MainPage{
     get totalPurchase () {
         return $('.summary_total_label')
     }
+
+    get btnTwitter () {
+        return $('//li[.="Twitter"]')
+    }
+
+    get btnFacebook () {
+        return $('//li[.="Facebook"]')
+    }
+
+    get btnLinkedIn () {
+        return $('//li[.="LinkedIn"]')
+    }
+
+    get btnLinkedInCloseModal () {
+        return $('/html/body/header/nav/section/div[1]/button/icon/svg')
+    }
+
+    get titleLinkedIn () {
+        return $('body > div > header > nav > a > icon > svg')
+    }
+
+    get formLinkedIn () {
+        return $('.join-form')
+    }
+    
     async login (username, password) {
         await this.inputUsername.setValue(username);
         await this.inputPassword.setValue(password);

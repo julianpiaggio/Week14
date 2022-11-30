@@ -21,4 +21,23 @@ describe('My Login application', () => {
         await MainPage.btnGoHome.click();
         await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
     });
+    it('should open social media from home page and return to home', async () => {
+        await MainPage.btnTwitter.click();
+        await browser.switchWindow('https://twitter.com/saucelabs');
+        await expect(browser).toHaveUrl('https://twitter.com/saucelabs');
+        await browser.switchWindow('https://www.saucedemo.com/inventory.html');
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+        await MainPage.btnFacebook.click();
+        await browser.switchWindow('https://www.facebook.com/saucelabs');
+        await expect(browser).toHaveUrl('https://www.facebook.com/saucelabs');
+        await browser.switchWindow('https://www.saucedemo.com/inventory.html');
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+        await MainPage.btnLinkedIn.click();
+        await browser.switchWindow('Iniciar sesión | LinkedIn');
+        await expect(browser).toHaveUrlContaining('https://www.linkedin.com/');
+        await expect(MainPage.titleLinkedIn).toBeDisplayed();
+        await expect(MainPage.formLinkedIn).toBeDisplayed();
+        await browser.switchWindow('https://www.saucedemo.com/inventory.html');
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+    });
 });
